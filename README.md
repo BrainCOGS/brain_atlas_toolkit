@@ -37,6 +37,7 @@ This package is intended as a toolkit for manipulating hierarchical brain atlase
 ### Load a custom brain atlas from JSON file
 ```python
 from brain_atlas_toolkit import graph_tools
+import json
 
 json_file = "allen_ontology.json"
 with open(json_file,'r') as infile:
