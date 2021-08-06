@@ -108,6 +108,6 @@ digraph.format='png' # control the image type; supports png, pdf and other forma
 digraph.view()
 ```
 The last line will save and then open up an image in your default image viewer application. The image should look like this:
-<img src="Digraph.gv.png" alt="Image missing" width="500" height="200">
+<img src="Digraph.gv.png" alt="Image missing">
 
 For full documentation of the `digraph` object, see the graphviz Python API documentation: https://graphviz.readthedocs.io/en/stable/
