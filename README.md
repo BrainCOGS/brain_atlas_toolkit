@@ -108,6 +108,7 @@ digraph.format='png' # control the image type; supports png, pdf and other forma
 digraph.view()
 ```
 The last line will save and then open up an image in your default image viewer application. The image should look like this (click image to view zoomed in version):
-<img src="src/static/Digraph.gv.png" alt="Image missing">
+<img src="src/static/Digraph.gv.png" alt="https://github.com/BRAINCoGS/brain_atlas_toolkit/blob/master/src/static/Digraph.gv.png
+">
 
 For full documentation of the `digraph` object, see the graphviz Python API documentation: https://graphviz.readthedocs.io/en/stable/
