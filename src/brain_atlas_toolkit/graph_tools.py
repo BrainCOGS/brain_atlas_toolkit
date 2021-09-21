@@ -51,13 +51,26 @@ class Graph():
         progeny_list = []
         self.get_progeny_helper(nodename,progeny_list)
         return progeny_list
-    
+
     def get_progeny_helper(self,nodename,progeny_list):
         for child in self.graph[nodename].children:
             progeny_list.append(child.name)
             self.get_progeny_helper(child.name,progeny_list)
         return
     
+    def get_parent(self,nodename):
+        """ 
+        ---PURPOSE---
+        Return the parent of the given nodename
+        ---INPUT---
+        nodename     The node whose parent you want to retrieve
+        """
+        node = self.graph[nodename]
+        if node.parent:
+            return node.parent.name
+        else:
+            # root does not have a parent
+            return None
     def print_branch(self,nodename,stoplevel=2):
         """ 
         ---PURPOSE---
