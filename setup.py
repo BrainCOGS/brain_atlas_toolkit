@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="brain_atlas_toolkit",
-    version="0.4.1",
+    version="0.4.2",
     author="Austin Hoag",
     author_email="austinthomashoag@gmail.com",
     description="A set of tools for navigating, viewing and manipulating hierarchical brain atlases",

@@ -5,6 +5,8 @@ class Node():
     def __init__(self,name):
         self.name = name
         self.parent = None
+        self.id = None
+        self.acronym = None
         self.children = [] # list of Node objects
         self.level = None
     def __repr__(self):
@@ -24,6 +26,8 @@ class Graph():
         name = dic.get('name')
         if name not in self.graph:
             node = Node(name)
+            node.id = dic.get('id')
+            node.acronym = dic.get('acronym')
             self.graph[name] = node
         else:
             node = self.graph[name]
@@ -35,6 +39,8 @@ class Graph():
             child_name = child.get('name')
             child_node = Node(child_name)
             child_node.parent = node
+            child_node.id = child.get('id')
+            child_node.acronym = child.get('acronym')
             child_node.level = self.level 
             self.graph[child_name] = child_node
             node.children.append(child_node)
@@ -71,6 +77,42 @@ class Graph():
         else:
             # root does not have a parent
             return None
+
+    def get_id(self,nodename):
+        """ 
+        ---PURPOSE---
+        Return the id of the given nodename
+        ---INPUT---
+        nodename     The node whose id you want to retrieve
+        """
+        node = self.graph[nodename]
+        return node.id
+
+    def get_acronym(self,nodename):
+        """ 
+        ---PURPOSE---
+        Return the acronym of the given nodename
+        ---INPUT---
+        nodename     The node whose acronym you want to retrieve
+        """
+        node = self.graph[nodename]
+        return node.acronym
+
+    def lookup_region_name_by_id(self,ID):
+        """ 
+        ---PURPOSE---
+        Return the region name corresponding to an id, if one exists
+        ---INPUT---
+        ID     The id whose region name you want to look up
+        """
+        for node in self.graph.values():
+            if node.id == ID:
+                return node.name
+        else:
+            print(f"No region name found with id: {ID}")
+            return None
+
+    
     def print_branch(self,nodename,stoplevel=2):
         """ 
         ---PURPOSE---
