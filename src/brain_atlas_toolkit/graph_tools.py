@@ -78,6 +78,33 @@ class Graph():
             # root does not have a parent
             return None
 
+    def get_progenitors(self,nodename):
+        """ 
+        ---PURPOSE---
+        Return the line of progentiors [parent, grandparent, ..., root] of the given nodename in a list
+        ---INPUT---
+        nodename     The node whose parent you want to retrieve
+        """
+        node = self.graph[nodename]
+        progenitors_list = []
+        self.get_progenitors_helper(node,progenitors_list)
+        return progenitors_list
+
+    def get_progenitors_helper(self,node,progenitors_list):
+        """ 
+        ---PURPOSE---
+        Return the line of progentiors [parent, grandparent, ..., root] of the given nodename in a list
+        ---INPUT---
+        nodename     The node whose parent you want to retrieve
+        """
+
+        if node.parent:
+            progenitors_list.append(node.parent.name)
+            self.get_progenitors_helper(node.parent,progenitors_list)
+        else:
+            # root does not have a parent
+            return 
+
     def get_id(self,nodename):
         """ 
         ---PURPOSE---

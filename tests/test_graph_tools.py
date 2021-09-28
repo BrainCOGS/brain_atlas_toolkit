@@ -96,6 +96,45 @@ def test_get_parent_minimal(minimal_ontology_graph):
 	parent_root = minimal_ontology_graph.get_parent('root')
 	assert parent_root == None
 
+def test_get_progenitors_allen(allen_ontology_graph):
+	progenitors_cbn = allen_ontology_graph.get_progenitors('Cerebellar nuclei')
+	assert progenitors_cbn == ['Cerebellum', 'Basic cell groups and regions', 'root']
+	progenitors_fpct = allen_ontology_graph.get_progenitors('Frontal pole, cerebral cortex')
+	assert progenitors_fpct == ['Isocortex',
+	 'Cortical plate',
+	 'Cerebral cortex',
+	 'Cerebrum',
+	 'Basic cell groups and regions',
+	 'root']
+	progenitors_root = allen_ontology_graph.get_progenitors('root')
+	assert progenitors_root == []
+
+def test_get_progenitors_pma(pma_ontology_graph):
+	progenitors_cbn = pma_ontology_graph.get_progenitors('Cerebellar nuclei')
+	assert progenitors_cbn == ['Cerebellum', 'Basic cell groups and regions', 'root']
+	progenitors_fpct = pma_ontology_graph.get_progenitors('Frontal pole, cerebral cortex')
+	assert progenitors_fpct == ['Isocortex',
+	 'Cortical plate',
+	 'Cerebral cortex',
+	 'Cerebrum',
+	 'Basic cell groups and regions',
+	 'root']
+	progenitors_root = pma_ontology_graph.get_progenitors('root')
+	assert progenitors_root == []
+
+def test_get_progenitors_minimal(minimal_ontology_graph):
+	progenitors_cbn = minimal_ontology_graph.get_progenitors('Cerebellar nuclei')
+	assert progenitors_cbn == ['Cerebellum', 'Basic cell groups and regions', 'root']
+	progenitors_fpct = minimal_ontology_graph.get_progenitors('Frontal pole, cerebral cortex')
+	assert progenitors_fpct == ['Isocortex',
+	 'Cortical plate',
+	 'Cerebral cortex',
+	 'Cerebrum',
+	 'Basic cell groups and regions',
+	 'root']
+	progenitors_root = minimal_ontology_graph.get_progenitors('root')
+	assert progenitors_root == []
+
 def test_get_id_allen(allen_ontology_graph):
 	id_cbn = allen_ontology_graph.get_id('Cerebellar nuclei')
 	assert id_cbn == 519
