@@ -113,7 +113,7 @@ class Graph():
             return None
 
     
-    def print_branch(self,nodename,stoplevel=2):
+    def print_branch(self,nodename,stoplevel=-1):
         """ 
         ---PURPOSE---
         Print out the branch of the ontology, 
@@ -125,7 +125,9 @@ class Graph():
                      Use -1 to print the entire branch out
         """
         level = 0
+        self.printstr = ""
         self._print_branch_helper(nodename,stoplevel=stoplevel,level=level)
+        return self.printstr
     
     def _print_branch_helper(self,nodename,stoplevel=2,level=0):
         """ 
@@ -141,9 +143,10 @@ class Graph():
         if stoplevel == -1:
             pass
         elif level > stoplevel:
-            return
-        
-        print("\t"*level,level,nodename)
+            return 
+        this_str =" ".join(["\t"*level,str(level),str(nodename)])
+        print(this_str)
+        self.printstr+=this_str + "\n"
         for child in self.graph[nodename].children:
             self._print_branch_helper(child.name,stoplevel=stoplevel,level=level+1)
         level-=1

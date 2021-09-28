@@ -44,12 +44,17 @@ with open(json_file,'r') as infile:
 	ontology_dict = json.load(infile)
 ```
 
+Note that this JSON file must have the structure of the example ontology shown above. The minimal set of keys in each element are: 
+- id
+- name
+- parent_structure_id
+
 ### Initialize ontology graph
 ```python
 ontology_graph = graph_tools.Graph(ontology_dict)
 ```
 
-### Get all progeny (a.k.a. descendents or subregions) of a region of interest returned in a list
+### Get all progeny (a.k.a. descendents or subregions) of a region of interest returned in a flattened list
 
 ```python
 ontology_graph.get_progeny('Somatomotor areas')
@@ -57,6 +62,33 @@ ontology_graph.get_progeny('Somatomotor areas')
 which returns:
 ```
 ['Somatomotor areas, Layer 1', 'Somatomotor areas, Layer 2/3', 'Somatomotor areas, Layer 5', 'Somatomotor areas, Layer 6a', 'Somatomotor areas, Layer 6b', 'Primary motor area', 'Primary motor area, Layer 1', 'Primary motor area, Layer 2/3', 'Primary motor area, Layer 5', 'Primary motor area, Layer 6a', 'Primary motor area, Layer 6b', 'Secondary motor area', 'Secondary motor area, layer 1', 'Secondary motor area, layer 2/3', 'Secondary motor area, layer 5', 'Secondary motor area, layer 6a', 'Secondary motor area, layer 6b']
+```
+
+### Get the parent name of a region of interest
+```python
+ontology_graph.get_parent('Somatomotor areas')
+```
+which returns:
+```
+Isocortex
+```
+
+### Get the integer id of a region of interest
+```python
+ontology_graph.get_id('Somatomotor areas')
+```
+which returns:
+```
+500
+```
+
+### Get the acronym name of a region of interest
+```python
+ontology_graph.get_parent('Somatomotor areas')
+```
+which returns:
+```
+MO
 ```
 
 ### Print a branch of the ontology 
@@ -101,6 +133,7 @@ which returns
 	 1 Primary motor area
 	 1 Secondary motor area
 ```
+The default stoplevel value is -1, which means print the entire tree to max depth.
 
 ### Visualize a branch of the ontology
 ```python
