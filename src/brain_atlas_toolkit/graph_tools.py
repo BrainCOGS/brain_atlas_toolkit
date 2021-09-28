@@ -47,21 +47,28 @@ class Graph():
             self._make_graph(child)
         self.level -= 1
     
-    def get_progeny(self,nodename):
+    def get_progeny(self,nodename,stoplevel=-1):
         """ 
         ---PURPOSE---
         Return a list of all progeny (aka descendents) of the the given nodename
         ---INPUT---
         nodename     The parent node whose descendents to retrieve
         """
+        level = 0
         progeny_list = []
-        self.get_progeny_helper(nodename,progeny_list)
+        self.get_progeny_helper(nodename,progeny_list,stoplevel,level=level)
         return progeny_list
 
-    def get_progeny_helper(self,nodename,progeny_list):
+    def get_progeny_helper(self,nodename,progeny_list,stoplevel,level):
+        if stoplevel == -1:
+            pass
+        elif level == stoplevel:
+            return 
+        
         for child in self.graph[nodename].children:
             progeny_list.append(child.name)
-            self.get_progeny_helper(child.name,progeny_list)
+            self.get_progeny_helper(child.name,progeny_list,stoplevel=stoplevel,level=level+1)
+        level-=1
         return
     
     def get_parent(self,nodename):

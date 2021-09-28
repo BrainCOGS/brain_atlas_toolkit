@@ -43,6 +43,15 @@ def test_get_progeny_allen(allen_ontology_graph):
 		 'Frontal pole, layer 5',
 		 'Frontal pole, layer 6a',
 		 'Frontal pole, layer 6b']
+	progeny_MO_onelevel = allen_ontology_graph.get_progeny('Somatomotor areas',stoplevel=1)
+	assert progeny_MO_onelevel == [
+		'Somatomotor areas, Layer 1',
+		'Somatomotor areas, Layer 2/3',
+		'Somatomotor areas, Layer 5',
+		'Somatomotor areas, Layer 6a',
+		'Somatomotor areas, Layer 6b',
+		'Primary motor area',
+		'Secondary motor area']
 
 def test_get_progeny_pma(pma_ontology_graph):
 	progeny_cbn = pma_ontology_graph.get_progeny('Cerebellar nuclei')
@@ -242,6 +251,3 @@ def test_make_html_ontology_allen(allen_ontology_graph):
 	assert "<li>1 Basic cell groups and regions </li>" in html_str_ontology
 	assert "<li>2 Cerebrum </li>" in html_str_ontology
 	assert "<li>5 Hypothalamic medial zone </li>" in html_str_ontology
-
-
-

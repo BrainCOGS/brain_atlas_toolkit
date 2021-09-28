@@ -64,6 +64,24 @@ which returns:
 ['Somatomotor areas, Layer 1', 'Somatomotor areas, Layer 2/3', 'Somatomotor areas, Layer 5', 'Somatomotor areas, Layer 6a', 'Somatomotor areas, Layer 6b', 'Primary motor area', 'Primary motor area, Layer 1', 'Primary motor area, Layer 2/3', 'Primary motor area, Layer 5', 'Primary motor area, Layer 6a', 'Primary motor area, Layer 6b', 'Secondary motor area', 'Secondary motor area, layer 1', 'Secondary motor area, layer 2/3', 'Secondary motor area, layer 5', 'Secondary motor area, layer 6a', 'Secondary motor area, layer 6b']
 ```
 
+### Get progeny (a.k.a. descendents or subregions) of a region of interest down to a certain depth of the tree, returned in a flattened list
+
+```python
+ontology_graph.get_progeny('Somatomotor areas',stoplevel=1) # only returns immediate children, stoplevel=2 means children and grandchildren, etc...
+```
+which returns:
+```
+['Somatomotor areas, Layer 1',
+ 'Somatomotor areas, Layer 2/3',
+ 'Somatomotor areas, Layer 5',
+ 'Somatomotor areas, Layer 6a',
+ 'Somatomotor areas, Layer 6b',
+ 'Primary motor area',
+ 'Secondary motor area']
+```
+The default stoplevel value is -1, which means get all descendents in the entire tree to max depth.
+
+
 ### Get the parent name of a region of interest
 ```python
 ontology_graph.get_parent('Somatomotor areas')
@@ -71,6 +89,20 @@ ontology_graph.get_parent('Somatomotor areas')
 which returns:
 ```
 Isocortex
+```
+
+### Get the progenitor line of a region of interest
+```python
+ontology_graph.get_progenitors('Somatomotor areas')
+```
+which returns:
+```
+['Isocortex',
+ 'Cortical plate',
+ 'Cerebral cortex',
+ 'Cerebrum',
+ 'Basic cell groups and regions',
+ 'root']
 ```
 
 ### Get the integer id of a region of interest
