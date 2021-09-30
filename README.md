@@ -32,6 +32,12 @@ This package is intended as a toolkit for manipulating hierarchical brain atlase
 - python>=3.7
 - A system-wide installation of graphviz: https://www.graphviz.org/ if you are going to use any of the visualization tools in this package.
 
+## Installation
+
+```
+$ pip install brain-atlas-toolkit
+```
+
 ## Examples
 
 ### Load a custom brain atlas from JSON file
